@@ -2,6 +2,7 @@ const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 const { URL } = require('url');
 
+import { episodeLimit } from './parserConfigs';
 const BASE_URL = 'https://cointoon.net';
 const cointoonUrl = `${BASE_URL}/comic/435/오렌지+마말레이드`;
 const cointoonScenesUrl = `${BASE_URL}/comic_view/24105/오렌지+마말레이드+1화+-+만남`;
@@ -23,7 +24,11 @@ function fetchCointoons(url = BASE_URL) {
             thumbnailUrl: img.attribs.src,
             photoUrl: ''
           };
-          kortoons.push(kortoon);
+          if (index >= episodeLimit) {
+            return false;
+          } else {
+            kortoons.push(kortoon);
+          }
         });
 
         resolve(kortoons);

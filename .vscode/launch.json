@@ -11,6 +11,12 @@
       "program": "/usr/local/bin/serverless",
       "args": ["offline", "start", "--skipCacheInvalidation"]
     },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "jest parser",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["parser.test.js"]
     }
   ]
 }

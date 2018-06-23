@@ -3,6 +3,7 @@ const fetch = require('node-fetch');
 const { URL } = require('url');
 const Base = require('./Base');
 
+import { episodeLimit } from './parserConfigs';
 const BASE_URL = 'https://toonkor.life';
 const toonkorUrl = `${BASE_URL}/수화`;
 const toonkorScenesUrl = `${BASE_URL}/수화_2부_5화.html`;
@@ -28,7 +29,11 @@ function fetchToonkors(url = BASE_URL) {
               .find('a')
               .attr('href')}`
           };
-          kortoons.push(kortoon);
+          if (index >= episodeLimit) {
+            return false;
+          } else {
+            kortoons.push(kortoon);
+          }
         });
         resolve(kortoons);
       })

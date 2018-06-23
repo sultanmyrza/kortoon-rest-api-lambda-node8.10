@@ -2,6 +2,7 @@ const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 const { URL } = require('url');
 
+import { episodeLimit } from './parserConfigs';
 const BASE_URL = 'https://www.gotoon.net';
 const BACK_UP_BASE_UR = 'https://kukudas.xyz';
 const gotoonUrl = `${BASE_URL}/toon/하룻밤-아내`;
@@ -28,7 +29,11 @@ function fetchGotoons(url = BASE_URL) {
             thumbnailUrl: thumbnailUrl,
             photoUrl: ''
           };
-          kortoons.push(kortoon);
+          if (index >= episodeLimit) {
+            return false;
+          } else {
+            kortoons.push(kortoon);
+          }
         });
         resolve(kortoons);
       })

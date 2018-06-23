@@ -1,3 +1,4 @@
+import { episodeLimit } from '../../../utils/parser/parserConfigs';
 const kortoonParser = require('../../../utils/parser');
 
 const parserNames = kortoonParser.parserNames;
@@ -11,6 +12,8 @@ for (let parser of parserNames) {
       let kortoons = await kortoonParser[`fetch${parser}s`]();
       expect(Array.isArray(kortoons)).toBeTruthy();
       expect(kortoons.length).toBeGreaterThan(1);
+      expect(kortoons.length).toBeLessThanOrEqual(episodeLimit);
+
       const kortoon = kortoons[0];
       expect(kortoon.title.length).toBeGreaterThan(3);
       expect(kortoon.url.includes('http')).toBeTruthy();
