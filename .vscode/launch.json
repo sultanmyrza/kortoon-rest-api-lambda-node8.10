@@ -10,6 +10,7 @@
       "name": "Debug serverless offline",
       "program": "/usr/local/bin/serverless",
       "args": ["offline", "start", "--skipCacheInvalidation"]
+    },
     }
   ]
 }
