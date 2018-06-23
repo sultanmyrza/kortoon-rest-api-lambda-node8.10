@@ -91,18 +91,16 @@ function fetchToonkorScenes(url = toonkorScenesUrl) {
       .then(body => {
         let $ = cheerio.load(body);
         let scenes = [];
-        let toon_img = '';
-        try {
-          let regex = new RegExp("toon_img = '.+';");
-          let searchResult = regex.exec(body);
-          let code = searchResult[0];
 
-          eval(code);
-          toon_img = Base.decode(toon_img);
-        } catch (error) {
-          console.log('ERROR WHILE DECODING toon_img');
-          console.log(error);
-        }
+        // DECODING SCENES
+        let toon_img = '';
+        let regex = new RegExp("toon_img = '.+';");
+        let searchResult = regex.exec(body);
+        let code = searchResult[0];
+
+        eval(code);
+        toon_img = Base.decode(toon_img);
+
         $ = cheerio.load(toon_img);
         $('img').each(function(index, element) {
           let { alt, src } = element.attribs;
