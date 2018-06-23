@@ -29,6 +29,7 @@ for (let parser of parserNames) {
       expect(kortoon.photoUrl.includes('http')).toBeTruthy();
       expect(Array.isArray(kortoon.episodes)).toBeTruthy();
       expect(kortoon.episodes.length).toBe(kortoon.episodesCount);
+      expect(kortoon.episodes[0].episodeIndex).toBe(1);
     });
 
     test(`fetch${parser}scenes`, async () => {

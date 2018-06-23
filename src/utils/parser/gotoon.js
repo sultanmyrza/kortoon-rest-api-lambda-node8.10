@@ -72,7 +72,7 @@ function fetchGotoon(url = gotoonUrl) {
           title: kortoonTitle,
           summary: kortoonSummary,
           photoUrl: kortoonPhotoUrl,
-          episodes: episodes,
+          episodes: episodes.reverse(),
           episodesCount: episodesCount
         };
 
