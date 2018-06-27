@@ -24,6 +24,7 @@ for (let parser of parserNames) {
       console.log(`fetch${parser}`);
 
       let kortoon = await kortoonParser[`fetch${parser}`]();
+      expect(kortoon.provider).toBeTruthy();
       expect(kortoon.title.length).toBeGreaterThan(1);
       expect(kortoon.summary.length).toBeGreaterThan(1);
       expect(kortoon.photoUrl.includes('http')).toBeTruthy();

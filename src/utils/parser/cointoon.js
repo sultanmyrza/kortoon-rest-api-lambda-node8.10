@@ -65,6 +65,7 @@ function fetchCointoon(url = cointoonUrl) {
         });
         // COLLECT DATA IN 1 OBJECT
         const kortoon = {
+          provider: 'Cointoon',
           title: kortoonTitle,
           summary: kortoonSummary,
           photoUrl: kortoonPhotoUrl,

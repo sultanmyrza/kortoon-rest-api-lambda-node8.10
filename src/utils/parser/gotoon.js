@@ -69,6 +69,7 @@ function fetchGotoon(url = gotoonUrl) {
         });
 
         const kortoon = {
+          provider: 'Gotoon',
           title: kortoonTitle,
           summary: kortoonSummary,
           photoUrl: kortoonPhotoUrl,

@@ -75,6 +75,7 @@ function fetchToonkor(url = toonkorUrl) {
         });
         // COLLECT DATA INTO OBJ
         let kortoon = {
+          provider: 'Toonkor',
           title: kortoonTitle,
           summary: kortoonSummary,
           photoUrl: kortoonPhotoUrl,
